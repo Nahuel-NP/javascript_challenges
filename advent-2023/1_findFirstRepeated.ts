@@ -6,21 +6,21 @@ En otras palabras, si hay más de un número repetido, debes devolver el número
 
 function findFirstRepeated(gifts: Array<number>) {
 
-  const elementsArray: Array<{ element: number, value: number }> = [];
+  const elementsArray: Array<{ element: number, indexSecond: number, }> = [];
 
   gifts.forEach((el, index) => {
-    const indexofel = gifts.indexOf(el, index + 1);
-    if (indexofel !== -1) {
-      elementsArray.push({ element: el, value: indexofel - index })
-    }
+      const indexofel = gifts.indexOf(el, index + 1);
+      if (indexofel !== -1) {
+        elementsArray.push({ element: el, indexSecond:indexofel})
+      }
   })
 
   if (!elementsArray.length) return -1;
 
   //find the min value
-  const auxArray = elementsArray.map(({ value }) => value);
+  const auxArray = elementsArray.map(({ indexSecond }) => indexSecond);
   const min = Math.min(...auxArray);
-  const element = elementsArray.find((element) => element.value === min)
+  const element = elementsArray.find((element) => element.indexSecond === min);
 
   return element!.element;
 }
