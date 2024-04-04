@@ -26,13 +26,14 @@ manufacture(gifts, materials) // [] */
 const gifts = ['tren', 'oso', 'pelota'];
 const materials = 'tronesa';
 
-function manufacture(gifts:string[], materials:string) {
+function manufacture(gifts: string[], materials: string) {
 
-  const giftsCanMake:string[] = [];
+  const giftsCanMake: string[] = [];
 
-  gifts.forEach((gift:string)=>{
+  gifts.forEach((gift: string) => {
     const arrayFromGift = gift.split('');
-    const canMake = arrayFromGift.every((currentvalue)=> materials.includes(currentvalue))
+    const filterFunction = (currentvalue) => materials.includes(currentvalue);
+    const canMake = arrayFromGift.every(filterFunction);
 
     if (canMake) {
       giftsCanMake.push(gift)
