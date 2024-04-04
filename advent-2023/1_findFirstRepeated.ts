@@ -17,7 +17,6 @@ function findFirstRepeated(gifts: Array<number>) {
 
   if (!elementsArray.length) return -1;
 
-  //find the min value
   const auxArray = elementsArray.map(({ indexSecond }) => indexSecond);
   const min = Math.min(...auxArray);
   const element = elementsArray.find((element) => element.indexSecond === min);
