@@ -18,23 +18,23 @@ findNaughtyStep(original, modified) // '' */
 function findNaughtyStep(original: string, modified: string) {
 
   let step = '';
-  const findNoContainedChar = (wordOne:string,wordTwo:string) => {
-
-    for (let i = 0; i < wordOne.length; i++) {
-      if (wordOne.charAt(i) !== wordTwo.charAt(i)) {
-        step = wordOne.charAt(i);
-        break;
-      }
-      
-    }
-  }
+  let wordOne = '';
+  let wordTwo = '';
 
   if (original.length > modified.length) {
-    findNoContainedChar(original,modified);
-  }else{
-    findNoContainedChar(modified,original);
+    wordOne = original;
+    wordTwo = modified;
+  } else {
+    wordTwo = original;
+    wordOne = modified;
   }
 
+  for (let i = 0; i < wordOne.length; i++) {
+    if (wordOne.charAt(i) !== wordTwo.charAt(i)) {
+      step = wordOne.charAt(i);
+      break;
+    }
+  }
   return step;
 }
 
