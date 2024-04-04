@@ -15,7 +15,7 @@ const original = 'abcde'
 const modified = 'abcde'
 findNaughtyStep(original, modified) // '' */
 
-function findNaughtyStep(original: string, modified: string) {
+/* function findNaughtyStep(original: string, modified: string) {
 
   let step = '';
   let wordOne = '';
@@ -32,6 +32,20 @@ function findNaughtyStep(original: string, modified: string) {
   for (let i = 0; i < wordOne.length; i++) {
     if (wordOne.charAt(i) !== wordTwo.charAt(i)) {
       step = wordOne.charAt(i);
+      break;
+    }
+  }
+  return step;
+} */
+
+function findNaughtyStep(original: string, modified: string) {
+
+  let step = '';
+  let iteratorWord = modified.length >= original.length ? modified : original
+
+  for (let i = 0; i < iteratorWord.length; i++) {
+    if (original.charAt(i) !== modified.charAt(i)) {
+      step = iteratorWord.charAt(i);
       break;
     }
   }
