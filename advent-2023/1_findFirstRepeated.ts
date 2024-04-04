@@ -4,7 +4,8 @@ Sin embargo, debido a un error en la máquina de juguetes, algunos números se h
 ¡Encuentra el primer número de identificación que se ha repetido, donde la segunda ocurrencia tenga el índice más pequeño!
 En otras palabras, si hay más de un número repetido, debes devolver el número cuya segunda ocurrencia aparezca primero en la lista. Si no hay números repetidos, devuelve -1. */
 
-function findFirstRepeated(gifts: Array<number>) {
+// first solution
+/* function findFirstRepeated(gifts: Array<number>) {
 
   const elementsArray: Array<{ element: number, indexSecond: number, }> = [];
 
@@ -22,8 +23,19 @@ function findFirstRepeated(gifts: Array<number>) {
   const element = elementsArray.find((element) => element.indexSecond === min);
 
   return element!.element;
-}
+} */
 
+// optimal solution
+
+function findFirstRepeated(gifts: Array<number>) {
+  const includedNumbers: number[] = [];
+
+  for (const number of gifts) {
+    if (includedNumbers.includes(number)) return number;
+
+    includedNumbers.push(number)
+  }
+}
 
 const first = findFirstRepeated([5, 1, 5, 1])
 console.log(first)
