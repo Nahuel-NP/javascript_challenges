@@ -26,7 +26,7 @@ manufacture(gifts, materials) // [] */
 const gifts = ['tren', 'oso', 'pelota'];
 const materials = 'tronesa';
 
-function manufacture(gifts: string[], materials: string) {
+/* function manufacture(gifts: string[], materials: string) {
 
   const giftsCanMake: string[] = [];
 
@@ -41,7 +41,15 @@ function manufacture(gifts: string[], materials: string) {
   })
 
   return giftsCanMake
+} */
+
+function manufacture(gifts: string[], materials: string) {
+
+  return gifts.filter((gift) => {
+    return gift.split('').every(char => materials.includes(char))
+  })
+
 }
 
-const elements = manufacture(gifts,materials);
+const elements = manufacture(gifts, materials);
 console.log(elements);
