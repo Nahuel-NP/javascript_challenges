@@ -31,31 +31,32 @@ const result = cyberReindeer(road, time)
 ]
 */
 function cyberReindeer(road: string, time: number) {
-  // const withOutBarreras = road.replace('|','*');
+
   let positionOfS = road.indexOf('S'); // 0
-  let output: string[] = [];
-  let count = 0;
+  let output: string[] = [road];
   let myRoad = road.split('');
 
-  do {
-    output.push(myRoad.join(''))
+  for (let index = 1; index < time; index++) {
 
-    if (count == 4) {
+    if (index == 5) {
       myRoad = myRoad.map((value) => {
         if (value === '|') return '*'
         return value;
       })
     }
 
-    const charAtNextPosition = myRoad[positionOfS + 1]; // .
+    const nextPosition = positionOfS + 1;
+    const charAtNextPosition = myRoad[nextPosition]; // .
 
-    if (charAtNextPosition && charAtNextPosition !== '|') {
-      myRoad[positionOfS + 1] = 'S';
-      myRoad[positionOfS] = road[positionOfS] === '|' ? '*' :'.'
+    if (charAtNextPosition !== '|') {
+
+      myRoad[nextPosition] = 'S';
+      myRoad[positionOfS] = road[positionOfS] === '|' ? '*' : '.'
       positionOfS++;
     }
-    count++;
 
-  } while (count != time)
+    output.push(myRoad.join(''))
+
+  }
   return output
 }
