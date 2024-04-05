@@ -35,6 +35,7 @@ function findFirstRepeated(gifts: Array<number>) {
 
     includedNumbers.push(number)
   }
+  return -1
 }
 
 const first = findFirstRepeated([5, 1, 5, 1])
