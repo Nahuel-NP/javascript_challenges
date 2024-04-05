@@ -13,33 +13,35 @@ function drawGift(size: number, symbol: string) {
 
   const edgeCount = size - 2;
 
+  let spaces = " ".repeat(skipCount);
+
   const border = "#".repeat(size);
 
-  let message = "";
+  gift[size - 1] = `${border}${symbol.repeat(edgeCount)}#`;
+
+  gift[0] = spaces + border;
+
+  gift[size * 2 - 2] = border;
+
   for (let iteracion = 1; iteracion <= size; iteracion++) {
-    message = " ".repeat(skipCount);
+
+    spaces = " ".repeat(skipCount);
 
     skipCount--;
 
-    if (iteracion === 1) {
-      gift[iteracion - 1] = message + border;
-      gift[size * 2 - 2] = border;
-    }
-
     if (iteracion !== 1 && iteracion !== size) {
+      let repeat = iteracion - 2;
 
-      gift[iteracion - 1] = `${message}#${symbol.repeat(
+      gift[iteracion - 1] = `${spaces}#${symbol.repeat(
         edgeCount
-      )}#${symbol.repeat(iteracion - 2)}#`;
+      )}#${symbol.repeat(repeat)}#`;
 
-      gift[size * 2 - 1 - iteracion] = `#${symbol.repeat(
+      gift[size * 2 - iteracion - 1] = `#${symbol.repeat(
         edgeCount
-      )}#${symbol.repeat(iteracion - 2)}#`;
+      )}#${symbol.repeat(repeat)}#`;
     }
 
-    if (iteracion === size - 1) {
-      gift[size - 1] = `${border}${symbol.repeat(edgeCount)}#`;
-    }
+
   }
 
   return gift.join("\n").concat("\n")
