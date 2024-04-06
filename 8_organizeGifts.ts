@@ -26,12 +26,14 @@ console.log(result1)
     const petternRegEx = /\d+\w/g;
   
     const arrayGifts = gifts.match(petternRegEx);
-  
-    const nums = arrayGifts?.reduce((acc, el) => {
-      const str = Array(el.match(/[a-zA-z]/g));
-      const num = Array(el.match(/\d+/g));
-      return [...acc, [...num, ...str].flat()];
-    }, []);
+    
+    const nums = [];
+    
+    arrayGifts?.forEach((el) => {
+      const str = el.match(/[a-zA-z]/g);
+      const num = el.match(/\d+/g);
+      nums.push([...num, ...str]);
+    });
   
     let message = "";
   
@@ -50,13 +52,13 @@ console.log(result1)
         message = message.replaceAll(palet, `[${char}]`);
       }
       if (count > 0) {
-        message+='('
+        message += "(";
         while (count > 0) {
           message += `${char}`;
           count -= 1;
         }
-        message+=')'
+        message += ")";
       }
     }
-    console.log(message);
+    return message;
   }
